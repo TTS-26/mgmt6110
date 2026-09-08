@@ -1,0 +1,6 @@
+{
+  "name": "SNUFFERS - Chic Canine Apparel",
+  "description": "Chic, comfortable, affordable, and inclusive dog apparel with universal breed ergonomics and inclusive sizing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
