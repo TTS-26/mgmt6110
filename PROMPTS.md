@@ -306,3 +306,193 @@ The three shoe products retained their existing images, names, prices, descripti
 ### What changed next and why
 
 No further design changes were made. I tested the category filters, chest-girth filtering, product-detail navigation, matching-size highlighting, size and colour selection, and Add to Bag interaction. The final interface was kept unchanged after testing.
+## Prompt 1
+
+Please help me add a simple live weather feature to my existing Snuffers app.
+
+I want to use Singapore's public NEA/data.gov.sg 2-hour weather forecast API:
+
+[https://api-open.data.gov.sg/v2/real-time/api/two-hr-forecast](https://api-open.data.gov.sg/v2/real-time/api/two-hr-forecast)
+
+I tested the API directly in my browser and it returned a successful response. The response includes an area called "City", and the forecast for City was:
+
+> "area": "City",  
+> "forecast": "Partly Cloudy (Night)"
+
+Please inspect my existing project first and make the smallest changes necessary.
+
+### What I want:
+
+1. Add a server-side weather endpoint at `/api/weather`.
+2. The server-side function should call the NEA weather API and retrieve the forecast for "City".
+3. The browser should call `/api/weather` rather than calling the NEA API directly.
+4. Display the live weather condition somewhere appropriate in the existing Snuffers interface without redesigning the website.
+5. Handle loading, no-data, and API failure/unreachable states with clear messages.
+6. Add the required `/api/health` endpoint.
+7. Cache the weather response for about 30 minutes, since the source updates every 30 minutes.
+8. Credit NEA/data.gov.sg where appropriate.
+9. Do not add an API key, because this public endpoint does not require one.
+10. Do not add new npm packages, a database, or login/authentication.
+11. Keep the existing Snuffers design and functionality unchanged as much as possible.
+
+The project already has `"type": "module"` in package.json, so please keep that.
+
+Before making changes, tell me which files you plan to create or modify and why. Then make the changes.
+
+**Result:** The agent implemented the live weather integration, but it incorrectly created a `server.ts` backend and added weather-based dog-walking/outing recommendation.
+
+
+---
+
+## Prompt 2
+
+Please make a correction to the implementation you just created.
+
+I want to keep the live weather feature, but I need it to follow the project requirements more strictly.
+
+1. Do NOT create or use `server.ts` for this backend.
+2. Create a root-level `"api"` folder beside package.json.
+3. Put the weather backend function in:
+   `api/weather.js`
+4. Put the health endpoint in:
+   `api/health.js`
+5. The frontend should continue calling `/api/weather`. The browser must not call the NEA API directly.
+6. Keep the existing Snuffers UI and the simple weather condition display.
+7. Remove the "canine walk suggestion", "outing suggestion", or any other weather-based recommendation. I only need the live weather condition for this problem set.
+8. Keep the NEA/data.gov.sg attribution.
+9. Keep the 30-minute caching.
+10. Do not add new npm packages, databases, authentication, or API keys.
+11. Keep `"type": "module"` in package.json.
+
+Please inspect the changes you just made and revise them rather than rebuilding the whole application.
+
+Before making the correction, tell me exactly which files you will create, modify, or remove.
+
+**Result:** The agent corrected the implementation by removing the recommendation and moving the backend to the required root-level `api/weather.js` and `api/health.js` serverless functions, while keeping the live weather display, attribution, and 30-minute cache.
+
+
+---
+
+## Prompt 3
+
+I have reviewed your previous changes against the Problem Set 2 instructions. Do not publish, deploy, or push anything.
+
+Make ONLY these corrections. Do not make any other changes to the existing product.
+
+### 1. HEALTH ENDPOINT
+
+Fix `api/health.js` so it satisfies the Problem Set 2 requirement that `/api/health` reports:
+
+- `keyConfigured`
+- whether the upstream answered
+- the upstream HTTP status
+- `checkedAt`
+
+It must never print or expose any credential.
+
+IMPORTANT: The selected weather service is the Singapore NEA/data.gov.sg weather API and it requires NO API key or signup. Do not invent a credential or environment variable. Represent that fact honestly in the health response rather than creating a fake secret requirement.
+
+The health endpoint should actually check the weather upstream and report its HTTP status. Do not merely return `{ status: "ok" }` without checking the upstream.
+
+### 2. REMOVE THE VITE API MIDDLEWARE
+
+Remove the custom `"api-endpoints"` middleware that was added to `vite.config.ts` solely to make `/api/weather` and `/api/health` work in the AI Studio preview.
+
+Do NOT create or invent a custom server.
+
+Do NOT add `server.ts`.
+
+Keep the normal existing Vite configuration otherwise unchanged.
+
+The required serverless functions must remain:
+
+- `/api/weather.js`
+- `/api/health.js`
+
+Both must be in the project-root `api/` directory, alongside package.json.
+
+### 3. PACKAGE.JSON
+
+Keep `"type": "module"`.
+
+Restore the existing package scripts unless a change is strictly necessary for the original project to run.
+
+Do not add any npm packages.
+
+### 4. WEATHER FUNCTION
+
+Keep `api/weather.js` using exactly this upstream:
+
+[https://api-open.data.gov.sg/v2/real-time/api/two-hr-forecast](https://api-open.data.gov.sg/v2/real-time/api/two-hr-forecast)
+
+It must:
+
+- call the upstream from the server-side function, not from browser code
+- find the forecast area `"City"`
+- read the forecast from `data.items[0].forecasts` by matching `area === "City"`
+- return only the weather fields the screen actually needs
+- check `response.ok` before reading the response body
+- return the upstream status and a clear one-line reason for non-2xx responses
+- keep the 30-minute cache because the assignment states this weather source updates every 30 minutes and the shared campus network has a rate limit
+
+### 5. FRONT END
+
+Keep the existing Snuffers design and functionality.
+
+The live weather condition should be displayed from `/api/weather`.
+
+Do NOT add dog-walking advice, outfit recommendations, or any other recommendation logic. A recommendation is a Type B claim and is not part of this Problem Set.
+
+The screen must have four distinct user-visible states required by the assignment:
+
+- loading
+- empty data
+- upstream refused
+- upstream unreachable
+
+Use four different clear sentences, not just one generic error or spinner.
+
+### 6. ATTRIBUTION
+
+Keep the footer credit for the live weather data source.
+
+Do not change anything unrelated to these corrections.
+
+**Result:** The agent made the required backend corrections- the Vite API middleware and custom-server approach were removed, the health endpoint was updated to check the actual weather upstream, and the weather function was aligned with the required City forecast and four distinct user-visible states.
+
+
+---
+
+## Prompt 4
+
+In `api/health.js`, the response currently reports `keyConfigured: true` because the NEA/data.gov.sg weather API requires no API key.
+
+That is incorrect. This weather service requires NO credential.
+
+Fix only this issue:
+
+Do not invent an API key or environment variable.
+
+Do not claim that a key is configured.
+
+Keep the required `keyConfigured` field, but set it to false because no credential is configured/required for this service.
+
+Keep the actual upstream check.
+
+Keep `upstreamAnswered`, `upstreamStatus`, and `checkedAt`.
+
+Never expose any credential.
+
+Do not change `api/weather.js`.
+
+Do not change the frontend.
+
+Do not change `vite.config.ts`.
+
+Do not add packages.
+
+Do not add `server.ts`.
+
+Do not publish or push anything.
+
+**Result:** The agent corrected `api/health.js` so that `keyConfigured` is `false` because the NEA/data.gov.sg weather API requires no credential, while keeping the actual upstream check, `upstreamAnswered`, `upstreamStatus`, and `checkedAt`.
