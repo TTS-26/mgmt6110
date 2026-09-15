@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart, ShoppingBag, User } from 'lucide-react';
 import { BRAND_WORDMARK } from '../data/products';
+import { WeatherBadge } from './WeatherBadge';
 
 interface HeaderProps {
   activeView: 'home' | 'product-detail' | 'sizing-guide';
@@ -102,8 +103,11 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </nav>
 
-        {/* Right Icon Actions: Wishlist, Bag */}
-        <div className="flex items-center gap-2">
+        {/* Right Icon Actions: Live Weather, Wishlist, Bag */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Live Singapore Weather Condition Badge */}
+          <WeatherBadge />
+
           {/* Wishlist Button */}
           <button
             id="header-wishlist-button"

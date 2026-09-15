@@ -36,6 +36,17 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="pt-2 text-[11px] font-semibold text-[#596244] uppercase tracking-wider">
               Singapore · Canine Living &amp; Apparel
             </div>
+            <p className="text-[11px] text-[#747878] leading-normal pt-1">
+              Live weather condition powered by Singapore National Environment Agency (NEA) via{' '}
+              <a
+                href="https://data.gov.sg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[#040505]"
+              >
+                data.gov.sg
+              </a>
+            </p>
           </div>
 
           {/* Col 1: Collections */}

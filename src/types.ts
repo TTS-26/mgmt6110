@@ -51,3 +51,8 @@ export interface CartItem {
   quantity: number;
   chestGirth: number;
 }
+
+export interface WeatherData {
+  area: string;
+  forecast: string;
+}
