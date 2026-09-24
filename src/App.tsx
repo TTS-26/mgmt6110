@@ -7,6 +7,7 @@ import { ChestGirthFinder } from './components/ChestGirthFinder';
 import { CatalogSection } from './components/CatalogSection';
 import { InclusivitySection } from './components/InclusivitySection';
 import { CustomOccasionsBanner } from './components/CustomOccasionsBanner';
+import { DisqusComments } from './components/DisqusComments';
 import { ProductDetailView } from './components/ProductDetailView';
 import { SizingGuideModal } from './components/SizingGuideModal';
 import { CartDrawer } from './components/CartDrawer';
@@ -185,6 +186,8 @@ export default function App() {
 
             {/* Custom Occasions */}
             <CustomOccasionsBanner />
+            
+            <DisqusComments />
           </>
         )}
 
