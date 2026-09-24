@@ -143,8 +143,42 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
+                {/* Privacy notice covering Microsoft Clarity and Disqus */}
+        <p className="pt-8 text-[11px] text-[#747878] leading-relaxed max-w-4xl">
+          This page uses Microsoft Clarity and Disqus, which use cookies to record how visitors
+          use the site and to host comments. By using this page you agree that we and Microsoft
+          may collect and use this data. See the{' '}
+          
+            href="https://www.microsoft.com/privacy/privacystatement"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-[#040505]"
+          >
+            Microsoft Privacy Statement
+          </a>
+          , the{' '}
+          
+            href="https://disqus.com/privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-[#040505]"
+          >
+            Disqus privacy policy
+          </a>{' '}
+          and the{' '}
+          
+            href="https://disqus.com/data-sharing-settings/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-[#040505]"
+          >
+            Disqus data sharing settings
+          </a>
+          .
+        </p>
+
         {/* Bottom copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#747878]">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#747878]">
           <div>
             © {new Date().getFullYear()} SNUFFERS. All rights reserved.
           </div>
