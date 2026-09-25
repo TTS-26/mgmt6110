@@ -90,12 +90,12 @@ export default function App() {
         ];
       }
     });
-    showToast(`Added ${product.title} (${size} Cut) to bag`);
+    showToast(product.category === 'treats' ? `Added ${product.title} to bag` : `Added ${product.title} (${size} Cut) to bag`);
     setIsCartOpen(true);
   };
 
   const handleQuickAdd = (product: Product) => {
-    handleAddToCart(product, detectedCut, product.colorways?.[0]?.name || 'Natural Linen');
+    handleAddToCart(product, product.category === 'treats' ? 'One Size' : detectedCut, product.colorways?.[0]?.name || 'Natural Linen');
   };
 
   const handleUpdateCartQuantity = (index: number, newQty: number) => {
