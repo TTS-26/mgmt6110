@@ -7,7 +7,7 @@ export const STANDARD_SIZE_OPTIONS: SizeOption[] = [
   { cut: 'Broad-Chest', girthRange: '52 – 75 cm', minGirth: 52, maxGirth: 75, backLengthRange: '32 – 44 cm', breeds: 'Bulldog, Frenchie, Staffy' },
 ];
 
-export const BRAND_WORDMARK = 'https://lh3.googleusercontent.com/aida/AEtjO1VJbGzDBPTRPIzSiGBriY8rMKuWsxLAeJLaOGKqtCBoHJVJ6xRe4CY1mGkuwR6NnlvAooR2SfK-Tqfb7avZ_tE_Lh_XwHd4MqLwG3hLzGcdoR4oBtSiHJkOtgrsPOufhIsEtGoBOfyCElAUZQIFwSxHD8SS1cOKZx_MAAaTSPtJBGYB8ttilNvESpE-eXdwUc3kmhk9gQdELR8gZVgruR6BPwvgwWkV-OSWMgJRRyZAxd3uY9uzArgvLFqN';
+export const BRAND_WORDMARK = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2232%22 fill=%22%23596244%22/%3E%3Cg fill=%22%23fbf9f5%22%3E%3Cellipse cx=%2219%22 cy=%2227%22 rx=%225.2%22 ry=%226.6%22/%3E%3Cellipse cx=%2227.5%22 cy=%2220.5%22 rx=%225.2%22 ry=%227%22/%3E%3Cellipse cx=%2236.5%22 cy=%2220.5%22 rx=%225.2%22 ry=%227%22/%3E%3Cellipse cx=%2245%22 cy=%2227%22 rx=%225.2%22 ry=%226.6%22/%3E%3Cellipse cx=%2232%22 cy=%2241%22 rx=%2211.5%22 ry=%229.5%22/%3E%3C/g%3E%3C/svg%3E';
 
 export const HERO_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuA_QmIg2kQpNRNbm8BhjIzO-ivL2liHsKclSNW5PQGU-IrFZ1TE7QXpZfKKHhLvgEzieWpdE74QlLPXOj3XZHx64GJ2NZbZG4Nx0-8j4WckEtJLdgFlJ1TTI1wsLwNHw984zeMVUHTvRTlYMPH9_Ob5iyBCPL41MbVJSbnkQ0pNBQP4-KIv4nMJpBl656XbtgPBA8CXPi6eitDFKaaELFhV1eNuwzexK0dji5o9WlBI3DL_K-_gpaSpKQ';
 
