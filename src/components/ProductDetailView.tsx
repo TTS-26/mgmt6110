@@ -273,8 +273,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
             </div>
 
             {/* Inclusive Canine Fit System Box */}
+                        {!isTreatProduct && (
             <div className="bg-[#ffffff] border border-[#e4e2de] rounded-xl p-5 space-y-4 shadow-xs">
-              {!isTreatProduct && (
               {isShoeProduct ? (
                 <>
                   {/* Profile Bar */}
