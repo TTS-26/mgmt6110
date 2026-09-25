@@ -135,7 +135,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                         </button>
                       </div>
                       <div className="text-[11px] text-[#596244] font-medium mt-0.5">
-                      {item.product.category === 'shoes' ? `Size: ${item.size} Paw` : item.product.category === 'treats' ? item.size : `${item.size} Cut`} · {item.colorway}
+                      {item.product.category === 'shoes' ? `Size: ${item.size} Paw` : item.product.category === 'treats' ? item.size : `${item.size} Cut`}{item.colorway ? ` · ${item.colorway}` : ''}
                       </div>
                       <div className="text-[10px] text-[#747878]">
                         {item.product.category === 'shoes' ? 'Paw Footwear Sizing' : `Calibrated for ~${item.chestGirth} cm chest`}

@@ -240,7 +240,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               {product.longDescription || product.description}
             </p>
 
-            {/* Colorway Selector */}
+            {/* Colorway Selector (not applicable to treats) */}
+            {!isTreatProduct && (
             <div className="space-y-2.5 pt-2 border-t border-[#eae8e4]">
               <div className="flex items-center justify-between text-xs">
                 <span className="font-semibold uppercase tracking-wider text-[#1b1c1a]">
@@ -271,6 +272,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 ))}
               </div>
             </div>
+            )}
 
             {/* Inclusive Canine Fit System Box */}
                         {!isTreatProduct && (
@@ -545,7 +547,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               <div className="flex items-center gap-3">
                 <button
                   id="product-add-to-bag-button"
-                  onClick={() => onAddToCart(product, isTreatProduct ? 'One Size' : isShoeProduct ? selectedShoeSize : selectedCut, selectedColor)}
+                  onClick={() => onAddToCart(product, isTreatProduct ? 'One Size' : isShoeProduct ? selectedShoeSize : selectedCut, isTreatProduct ? '' : selectedColor)}
                   className="flex-1 py-4 px-6 bg-[#040505] text-white text-xs font-semibold tracking-[0.14em] uppercase rounded-xl hover:bg-[#1e1e1e] transition-all transform active:scale-98 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4" />
@@ -571,7 +573,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               </div>
             </div>
 
-            {/* Tailoring & Ergonomics 4-Grid */}
+            {/* Tailoring & Ergonomics 4-Grid (garments and shoes only) */}
+            {!isTreatProduct && (
             <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#eae8e4]">
               <div className="p-3 bg-[#ffffff] border border-[#e4e2de] rounded-xl space-y-1">
                 <h5 className="text-[11px] font-semibold text-[#040505] uppercase tracking-wider">
@@ -606,6 +609,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 </p>
               </div>
             </div>
+            )}
           </div>
         </div>
 
