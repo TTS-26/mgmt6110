@@ -19,7 +19,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onToggleWishlist,
 }) => {
   // Check if product target chest is close to the entered girth (within +/- 6cm)
-  const isDirectGirthMatch = Math.abs(product.girth - currentGirth) <= 6;
+    const isDirectGirthMatch = product.category !== 'treats' && Math.abs(product.girth - currentGirth) <= 6;
 
   return (
     <div
