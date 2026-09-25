@@ -4,6 +4,7 @@ import { Product, BodyCut, ShoeSize, CartItem } from './types';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { ChestGirthFinder } from './components/ChestGirthFinder';
+import { TodayPicks } from './components/TodayPicks';
 import { CatalogSection } from './components/CatalogSection';
 import { InclusivitySection } from './components/InclusivitySection';
 import { CustomOccasionsBanner } from './components/CustomOccasionsBanner';
@@ -158,6 +159,7 @@ export default function App() {
               onSizingClick={() => handleScrollToSection('inclusive-matrix')}
             />
 
+            <TodayPicks products={PRODUCTS} onSelectProduct={handleSelectProduct} />
             {/* Chest Girth Finder (Interactive Precision Tool) */}
             <ChestGirthFinder
               currentGirth={currentGirth}
