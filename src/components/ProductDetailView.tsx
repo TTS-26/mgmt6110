@@ -83,6 +83,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
   ];
 
   const isShoeProduct = product.category === 'shoes';
+  const isTreatProduct = product.category === 'treats';
   const [selectedShoeSize, setSelectedShoeSize] = useState<ShoeSize>('Standard');
 
   useEffect(() => {
@@ -273,6 +274,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
             {/* Inclusive Canine Fit System Box */}
             <div className="bg-[#ffffff] border border-[#e4e2de] rounded-xl p-5 space-y-4 shadow-xs">
+              {!isTreatProduct && (
               {isShoeProduct ? (
                 <>
                   {/* Profile Bar */}
@@ -536,13 +538,14 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 </>
               )}
             </div>
+              )}
 
-            {/* Action Buttons: Add to Bag & Wishlist */}
+            {/* Action Buttons: Add to Bag & Wishlist */} 
             <div className="space-y-3 pt-2">
               <div className="flex items-center gap-3">
                 <button
                   id="product-add-to-bag-button"
-                  onClick={() => onAddToCart(product, isShoeProduct ? selectedShoeSize : selectedCut, selectedColor)}
+                  onClick={() => onAddToCart(product, isTreatProduct ? 'One Size' : isShoeProduct ? selectedShoeSize : selectedCut, selectedColor)}
                   className="flex-1 py-4 px-6 bg-[#040505] text-white text-xs font-semibold tracking-[0.14em] uppercase rounded-xl hover:bg-[#1e1e1e] transition-all transform active:scale-98 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4" />
