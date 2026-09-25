@@ -95,7 +95,7 @@ export default function App() {
   };
 
   const handleQuickAdd = (product: Product) => {
-    handleAddToCart(product, product.category === 'treats' ? 'One Size' : detectedCut, product.colorways?.[0]?.name || 'Natural Linen');
+    handleAddToCart(product, product.category === 'treats' ? 'One Size' : detectedCut, product.category === 'treats' ? '' : product.colorways?.[0]?.name || 'Natural Linen');
   };
 
   const handleUpdateCartQuantity = (index: number, newQty: number) => {
