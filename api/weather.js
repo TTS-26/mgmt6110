@@ -82,10 +82,10 @@ function readCityPsi(payload) {
 
 // Turn the readings into one sentence and a short list of product ids.
 //
-// Only conditions a visitor can act on earn a suggestion: rain, hot pavement,
-// unhealthy air, or strong sun. On an ordinary mild day the route returns no
-// recommendation at all and the page shows nothing, rather than stating the
-// obvious in the most prominent spot on the screen.
+// Every condition produces a suggestion, so a visitor always sees what the
+// live readings mean for their dog. Urgent conditions (rain, hot pavement,
+// unhealthy air, strong sun) take priority; on a mild day the answer is a
+// quieter everyday suggestion rather than silence.
 //
 // Matching is on keywords rather than exact NEA wordings, so new phrasings
 // upstream cannot silently break the recommendation.
@@ -117,9 +117,13 @@ function buildAdvice(forecast, tempC, psi) {
     push('solstice-uv-protection-poncho');
     push('provence-cooling-mesh-tank');
   } else if (isHazy) {
-    // Air quality alone is worth surfacing, even in otherwise unremarkable weather.
     headline = 'Air quality is poor in the City today.';
     push('coastal-breton-nautical-tee');
+  } else {
+    headline = 'Comfortable conditions in the City. Lightweight pieces suit today.';
+    push('coastal-breton-nautical-tee');
+    push('riviera-summer-linen-shirt');
+    push('provence-cooling-mesh-tank');
   }
 
   // Hot days often coincide with rain or sun, so shoes are added on top
@@ -129,11 +133,6 @@ function buildAdvice(forecast, tempC, psi) {
   }
 
   const note = isHazy ? 'Haze in the air today — keep walks short.' : null;
-
-  // Nothing worth acting on: no headline, no products, nothing rendered.
-  if (!headline) {
-    return { headline: null, note: null, recommend: [] };
-  }
 
   return { headline, note, recommend: recommend.slice(0, 3) };
 }
