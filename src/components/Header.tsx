@@ -37,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
               alt="Snuffers Brand Wordmark"
               className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
             />
-            <span className="hidden sm:inline font-serif-editorial text-[22px] tracking-tight text-[#040505] uppercase font-medium">
+            <span className="font-serif-editorial text-[22px] tracking-tight text-[#040505] uppercase font-medium">
               SNUFFERS
             </span>
           </button>
