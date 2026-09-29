@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="fixed top-0 left-0 w-full z-50 bg-[#fbf9f5]/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-[#eae8e4]/60">
       <div className="h-20 max-w-[88rem] mx-auto px-4 lg:px-10 flex items-center justify-between gap-4">
         {/* Brand Logo and Wordmark */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 min-w-0">
           <button
             id="brand-home-link"
             onClick={() => onNavigate('home')}
@@ -37,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
               alt="Snuffers Brand Wordmark"
               className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
             />
-            <span className="font-serif-editorial text-[22px] tracking-tight text-[#040505] uppercase font-medium">
+            <span className="hidden sm:inline font-serif-editorial text-[22px] tracking-tight text-[#040505] uppercase font-medium">
               SNUFFERS
             </span>
           </button>
@@ -104,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Right Icon Actions: Live Weather, Wishlist, Bag */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           {/* Live Singapore Weather Condition Badge */}
           <WeatherBadge />
 
@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
             id="header-wishlist-button"
             onClick={onOpenWishlist}
             aria-label="Wishlist"
-            className="relative p-2 text-[#444748] hover:text-[#1b1c1a] transition-colors flex items-center justify-center rounded-lg hover:bg-[#efeeea] cursor-pointer"
+            className="relative shrink-0 p-2 text-[#444748] hover:text-[#1b1c1a] transition-colors flex items-center justify-center rounded-lg hover:bg-[#efeeea] cursor-pointer"
           >
             <Heart className="w-[20px] h-[20px]" />
             <span
@@ -129,7 +129,7 @@ export const Header: React.FC<HeaderProps> = ({
             id="header-bag-button"
             onClick={onOpenCart}
             aria-label="Shopping Bag"
-            className="relative p-2 text-[#444748] hover:text-[#1b1c1a] transition-colors flex items-center justify-center rounded-lg hover:bg-[#efeeea] cursor-pointer"
+            className="relative shrink-0 p-2 text-[#444748] hover:text-[#1b1c1a] transition-colors flex items-center justify-center rounded-lg hover:bg-[#efeeea] cursor-pointer"
           >
             <ShoppingBag className="w-[20px] h-[20px]" />
             <span
