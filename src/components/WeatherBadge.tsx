@@ -235,8 +235,8 @@ export const WeatherBadge: React.FC = () => {
           <div className="flex items-center gap-1.5">
             {getWeatherIcon(state.forecast)}
             <div className="flex items-center gap-1 text-[11px]">
-              <span className="font-semibold text-[#040505]">City:</span>
-              <span id="weather-condition-display" className="truncate max-w-[130px] sm:max-w-[180px] text-[#444748]">
+              <span className="hidden sm:inline font-semibold text-[#040505]">City:</span>
+              <span id="weather-condition-display" className="truncate max-w-[90px] sm:max-w-[180px] text-[#444748]">
                 {state.forecast}
               </span>
             </div>
