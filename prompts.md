@@ -496,3 +496,74 @@ Do not add `server.ts`.
 Do not publish or push anything.
 
 **Result:** The agent corrected `api/health.js` so that `keyConfigured` is `false` because the NEA/data.gov.sg weather API requires no credential, while keeping the actual upstream check, `upstreamAnswered`, `upstreamStatus`, and `checkedAt`.
+
+
+---
+
+# Problem Set 4
+
+## Blind-arbiter exchanges
+
+None. My four-way table has no fourth-row findings (none of my four findings was raised by a groupmate), so no fourth-row finding rated 3 or 4 needed the arbiter. I first thought AL's finding 2 (sizing section on the product page is overwhelming, H8, sev 2) was not a real problem, but on looking at the page again I judged it a real but small problem, not a 0, so it did not go to the arbiter.
+
+## Repair 1: AWK finding 1, bag icon off-screen in the phone header (H8, sev 4, raised by AWK)
+
+### Prompt I used (sceptical developer)
+
+```
+ROLE: You are a sceptical senior developer and usability reviewer working in my
+existing project. Before you write any code, your job is to argue against the repair
+I propose.
+
+CONTEXT:
+- Live address: https://mgmt6110.vercel.app
+- Who the product is for, and what it does for them: SNUFFERS is for dog owners looking for chic but affordable outfits for every occasion, cut to fit any size, shape and breed of dog, and its one job is to help them find the right piece for their own dog in one place.
+- The finding, in its six lines:
+Where: https://mgmt6110.vercel.app, the top header bar on a phone (the Wishlist and Shopping Bag icons at the top right).
+What I did, what I saw: On a phone I opened the site, tapped DETAILS on the Riviera Summer Linen Shirt, then tapped ADD TO BAG. The bag counter went from 0 to 1, but the bag icon itself sits beyond the right edge of the screen (the header is 427 px wide on a 375 px phone), so I could not tap it to see my bag or check out. The Wishlist icon is half cut off too.
+Which heuristic: 8, Aesthetic and Minimalist Design (the layout hides the one control a shopper needs to finish).
+Screen or system: Screen. The page already has the bag and its contents; the header is simply too wide for a phone, so the icon is pushed off-screen.
+Severity, and why: 4, driven by what it costs when it happens. On a phone a shopper can add items but never reach the bag, so the shop's one job — buying — cannot be completed on the device most owners will use.
+The repair: On a phone, the Wishlist and Shopping Bag icons are fully visible and tappable in the header without scrolling sideways, and tapping the bag opens the bag.
+- The evidence behind it: 1 of 4 groupmates raised it.
+- The repair I propose: On a phone (375 px wide), the Wishlist and Shopping Bag icons are fully visible and tappable in the header without scrolling sideways, and tapping the bag opens the bag.
+
+GOAL: Argue against my repair.
+1. Does it solve the problem the finding describes, or a problem I already believed I
+   had? Say which, and why.
+2. Does the problem belong to the screen or to the system, and does my repair sit in
+   the right half?
+3. Name one heuristic this repair could break while it serves the one above, and how.
+4. Propose the smallest alternative that would make the same thing true.
+5. Tell me exactly what to do on the live address to check that the repair worked.
+
+OUTPUT: Your arguments first, as a numbered list. Then stop. Write no code until I
+reply with the repair I have chosen.
+
+GUARDRAILS: Do not tell me the repair is good. If you have no strong reason to doubt
+it, say so plainly instead of inventing one. When I do ask you to build, change only
+what the repair needs. Do not remove Disqus or the privacy notice,
+and do not break /api/health.
+```
+
+### The agent's arguments
+
+1. It solves the problem the finding describes, not one I already believed I had: it was not in my predictions.md, it came from AWK, and my own phone screenshots confirmed it. The cause is in `Header.tsx`: the logo, the word "SNUFFERS", the weather badge, Wishlist and Bag together are wider than a 375 px screen, and nothing stops the Bag button from being pushed off the edge.
+2. Screen. The bag's data works (the counter goes to 1 and the bag opens after adding); only the layout is wrong, so a layout change sits in the right half.
+3. It could break H1, Visibility of System Status: the obvious way to make room is to shrink or hide the live weather badge. Removing the word "SNUFFERS" on phones could also weaken the brand.
+4. Smallest alternative, on phones only (below 640 px), laptop unchanged: hide the word "SNUFFERS" next to the logo, hide the "City:" label in the weather badge and truncate the forecast shorter, and stop the Wishlist and Bag buttons from shrinking or being pushed off-screen.
+5. Check: on a phone, open https://mgmt6110.vercel.app, tap DETAILS on the Riviera Summer Linen Shirt, tap ADD TO BAG, close the bag; the bag icon shows 1 and tapping it opens the bag; the Wishlist heart is fully visible; the page does not scroll sideways; the weather badge still opens; the laptop header looks as before.
+
+### My decision (one line to the agent)
+
+"Build the smallest alternative in point 4 and change nothing else."
+
+Commits: `713d392`, `0e7b8a0`.
+
+### What I saw on the live address, and the argument I then turned down
+
+After it went live, the bag icon showed and opened on my phone, but the brand name "SNUFFERS" was gone from the header. I turned down that part of the agent's point 4: the brand name must stay. I told the agent in one line: bring back "SNUFFERS" next to the logo, and on phones show the weather as only the cloud icon and the dropdown arrow (which still opens the full weather details), and change nothing else.
+
+The agent also hid the phone text for the weather "loading" and "unavailable" states, because in testing those longer messages pushed the bag off-screen again.
+
+Commits: `6935a80`, `129a70d`.
