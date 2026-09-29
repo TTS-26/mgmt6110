@@ -195,7 +195,7 @@ export const WeatherBadge: React.FC = () => {
         {state.type === 'loading' && (
           <div className="flex items-center gap-1.5 text-[#747878] text-[11px]">
             <RefreshCw className="w-3 h-3 animate-spin text-[#596244]" />
-            <span id="weather-status-message" className="truncate max-w-[150px] sm:max-w-none">
+            <span id="weather-status-message" className="hidden sm:inline truncate max-w-[150px] sm:max-w-none">
               {state.sentence}
             </span>
           </div>
@@ -204,7 +204,7 @@ export const WeatherBadge: React.FC = () => {
         {state.type === 'empty_data' && (
           <div className="flex items-center gap-1.5 text-[#747878] text-[11px]">
             <Radio className="w-3.5 h-3.5 text-[#747878]" />
-            <span id="weather-status-message" className="truncate max-w-[160px] sm:max-w-none">
+            <span id="weather-status-message" className="hidden sm:inline truncate max-w-[160px] sm:max-w-none">
               {state.sentence}
             </span>
             <ChevronDown className="w-3 h-3 text-[#747878]" />
@@ -214,7 +214,7 @@ export const WeatherBadge: React.FC = () => {
         {state.type === 'upstream_refused' && (
           <div className="flex items-center gap-1.5 text-[#8e2820] text-[11px]">
             <AlertCircle className="w-3.5 h-3.5 text-[#8e2820] shrink-0" />
-            <span id="weather-status-message" className="truncate max-w-[170px] sm:max-w-none">
+            <span id="weather-status-message" className="hidden sm:inline truncate max-w-[170px] sm:max-w-none">
               {state.sentence}
             </span>
             <ChevronDown className="w-3 h-3 text-[#8e2820]" />
@@ -224,7 +224,7 @@ export const WeatherBadge: React.FC = () => {
         {state.type === 'upstream_unreachable' && (
           <div className="flex items-center gap-1.5 text-[#8e2820] text-[11px]">
             <AlertCircle className="w-3.5 h-3.5 text-[#8e2820] shrink-0" />
-            <span id="weather-status-message" className="truncate max-w-[170px] sm:max-w-none">
+            <span id="weather-status-message" className="hidden sm:inline truncate max-w-[170px] sm:max-w-none">
               {state.sentence}
             </span>
             <ChevronDown className="w-3 h-3 text-[#8e2820]" />
@@ -236,7 +236,7 @@ export const WeatherBadge: React.FC = () => {
             {getWeatherIcon(state.forecast)}
             <div className="flex items-center gap-1 text-[11px]">
               <span className="hidden sm:inline font-semibold text-[#040505]">City:</span>
-              <span id="weather-condition-display" className="truncate max-w-[90px] sm:max-w-[180px] text-[#444748]">
+              <span id="weather-condition-display" className="hidden sm:inline truncate max-w-[180px] text-[#444748]">
                 {state.forecast}
               </span>
             </div>
